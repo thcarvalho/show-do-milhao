@@ -31,6 +31,10 @@ const { theme } = db;
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico" />
+        <title>Show do Milhão</title>
+      </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
