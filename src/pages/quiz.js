@@ -5,6 +5,7 @@ import QuizContainer from '../components/QuizContainer';
 import QuizLogo from '../components/QuizLogo';
 import QuestionWidget from '../components/QuestionWidget';
 import LoadingWidget from '../components/LoadingWidget';
+import ResultWidget from '../components/ResultWidget';
 
 const screenStates = {
   QUIZ: 'QUIZ',
@@ -15,11 +16,19 @@ const screenStates = {
 export default function Quiz() {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [results, setResults] = useState([]);
   const totalQuestions = db.questions.length;
 
   useEffect(() => {
     setScreenState(screenStates.QUIZ);
   }, []);
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result,
+    ]);
+  }
 
   function handleSubmit() {
     const nextQuestion = questionIndex + 1;
@@ -40,13 +49,14 @@ export default function Quiz() {
             totalQuestions={totalQuestions}
             questionIndex={questionIndex}
             onSubmit={handleSubmit}
+            addResult={addResult}
           />
         )}
         {screenState === screenStates.LOADING && (
           <LoadingWidget />
         )}
         {screenState === screenStates.RESULT && (
-          <p>Resultado Final: XXXXX</p>
+          <ResultWidget results={results} />
         )}
       </QuizContainer>
     </QuizBackground>

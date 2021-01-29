@@ -6,7 +6,7 @@
     {
       "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
       "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
+      "description": "Valendo 1 mil reais!",
       "answer": 2,
       "alternatives": [
         ".elemento",
@@ -32,7 +32,7 @@
   "theme": {
     "colors": {
       "primary": "#961601",
-      "secondary": "#29b6f6",
+      "secondary": "#961601",
       "mainBg": "#000C94",
       "contrastText": "#FFFFFF",
       "wrong": "#FF5722",

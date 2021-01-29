@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AlternativesForm from '../AlternativesForm';
 import Button from '../Button';
 import { Widget } from '../Widget';
 
 function QuestionWidget({
-  totalQuestions, question, questionIndex, onSubmit,
+  totalQuestions, question, questionIndex, onSubmit, addResult,
 }) {
+  const [selectedValue, setSelectedValue] = useState(undefined);
+  const [isCorrect, setIsCorrect] = useState(null);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const questionId = `question__${questionIndex}`;
+  const hasAlternativeSelected = selectedValue !== undefined;
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsFormSubmitted(true);
+    if (question.answer === selectedValue) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
+  }
+
+  function handleNextQuestion(e) {
+    e.preventDefault();
+    addResult(isCorrect);
+    setSelectedValue(undefined);
+    setIsCorrect(null);
+    setIsFormSubmitted(false);
     onSubmit();
   }
+
   return (
     <Widget>
       <Widget.Header>
@@ -22,18 +42,39 @@ function QuestionWidget({
       <Widget.Content>
         <h2>{question.title}</h2>
         <p>{question.description}</p>
-        <form onSubmit={handleSubmit}>
+        <AlternativesForm onSubmit={isFormSubmitted ? handleNextQuestion : handleSubmit}>
           {question.alternatives.map((alternative, index) => {
             const alternativeId = `alternative__${index}`;
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const isSelected = selectedValue === index;
             return (
-              <Widget.Topic as="label" htmlFor={alternativeId}>
-                <input id={alternativeId} name={questionId} type="radio" />
+              <Widget.Topic
+                key={alternativeId}
+                as="label"
+                htmlFor={alternativeId}
+                data-selected={isSelected}
+                data-status={isFormSubmitted && alternativeStatus}
+              >
+                <input
+                  style={{ display: 'none' }}
+                  id={alternativeId}
+                  name={questionId}
+                  type="radio"
+                  onChange={() => setSelectedValue(index)}
+                />
                 {alternative}
               </Widget.Topic>
             );
           })}
-          <Button type="submit">Confirmar</Button>
-        </form>
+          {isFormSubmitted ? (
+            <div>
+              <Button type="submit">Próxima pergunta</Button>
+              <p>{isCorrect === true ? 'Certa Resposta!' : 'Que pena! Você errou!'}</p>
+            </div>
+          ) : (
+            <Button type="submit" disabled={!hasAlternativeSelected}>{hasAlternativeSelected ? 'Você está certo disso?' : 'Escolha uma alternativa'}</Button>
+          )}
+        </AlternativesForm>
       </Widget.Content>
     </Widget>
   );
