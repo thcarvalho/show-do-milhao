@@ -4,25 +4,123 @@
   "description": "Será que você consegue chegar até o final e conquistar o sonhado prêmio de 1 Milhão de reais? Mah oêe",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Valendo 1 mil reais!",
-      "answer": 2,
+      "image": "https://media.giphy.com/media/L1QMTl9ggmYGoCu7oj/giphy.gif",
+      "title": "Qual metal é utilizado na cunhagem das moedas?",
+      "description": "Pra começar! Valendo 1 mil reais!",
+      "answer": 0,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Níquel",
+        "Hélio",
+        "Chumbo",
+        "Mercúrio"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "https://media.giphy.com/media/OGcj5IFtW5PO0/giphy.gif",
+      "title": "O que é a Via Láctea?",
+      "description": "Não podia faltar essa pergunta! Valendo 2 mil reais!",
+      "answer": 3,
+      "alternatives": [
+        "Marca de leite",
+        "Civilização antiga",
+        "Carro",
+        "Galáxia"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/XEb90OzfzTduM/giphy.gif",
+      "title": "Qual fruta é ressecada para se tornar uma ameixa seca?",
+      "description": "Essa é facil né? Ou será que não? Valendo 5 mil reais!",
       "answer": 0,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+        "Ameixa",
+        "Uva",
+        "Pêssego",
+        "Melão"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/144AvcWy0GA5Vu/giphy.gif",
+      "title": "Qual o nome do profissional que conduz o elevador?",
+      "description": "Difícil? Valendo 10 mil reais!",
+      "answer": 2,
+      "alternatives": [
+         "Condutor",
+         "Elevadorista",
+         "Ascensorista",
+         "Botonista"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/SsTcO55LJDBsI/giphy.gif",
+      "title": "Qual animal da fauna brasileira está retratado na nota de dez reais?",
+      "description": "Usa muito dinheiro? Valendo 25 mil reais!",
+      "answer": 2,
+      "alternatives": [
+         "Jabuti",
+         "Onça",
+         "Arara",
+         "Tucano"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/3oh9NHoUYIgINkvQ4I/giphy.gif",
+      "title": "Qual é a invenção de Guglielmo Marconi?",
+      "description": "Vai pedir ajuda pros universitários? Valendo 50 mil reais!",
+      "answer": 3,
+      "alternatives": [
+         "Telescópio",
+         "Televisão",
+         "Telefone",
+         "Rádio"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/pPhyAv5t9V8djyRFJH/giphy.gif",
+      "title": "Onde é utilizado o sismógrafo?",
+      "description": "Vixe, peguei pesado? Valendo 100 mil reais!",
+      "answer": 1,
+      "alternatives": [
+         "Furacões",
+         "Terremotos",
+         "Maremotos",
+         "Tempestades"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/xUPGcqaVH1cDeKZTBS/giphy.gif",
+      "title": "Quantos noves tem de 0 a 100?",
+      "description": "Matématica? Valendo 200 mil reais!",
+      "answer": 2,
+      "alternatives": [
+         "10",
+         "11",
+         "20",
+         "21"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/H1hGoQeG96jxm/giphy.gif",
+      "title": "Em que dia nasceu e em que dia foi registrado o ex-presidente Lula?",
+      "description": "Companheiro, Valendo 500 mil reais!",
+      "answer": 0,
+      "alternatives": [
+         "6 e 27 de Outubro",
+         "8 e 27 de Outubro",
+         "9 e 26 de Outubro",
+         "7 e 23 de Outubro"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/Dl2seYrwPvfjO/giphy.gif",
+      "title": "Quantas letras contem a escrita da bandeira nacional brasileira?",
+      "description": "Só pelo meme, haha! valendo 1 milhão de reais!!",
+      "answer": 1,
+      "alternatives": [
+         "13",
+         "15",
+         "14",
+         "16"
       ]
     }
   ],
