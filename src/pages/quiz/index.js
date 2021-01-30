@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import db from '../../../db.json';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
@@ -6,6 +7,7 @@ import QuizLogo from '../../components/QuizLogo';
 import QuestionWidget from '../../components/QuestionWidget';
 import LoadingWidget from '../../components/LoadingWidget';
 import ResultWidget from '../../components/ResultWidget';
+import Silvio from '../../components/Silvio';
 
 const screenStates = {
   QUIZ: 'QUIZ',
@@ -17,6 +19,7 @@ export default function Quiz() {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [results, setResults] = useState([]);
+  const [endgame, setEndgame] = useState(false);
   const totalQuestions = db.questions.length;
 
   useEffect(() => {
@@ -32,10 +35,10 @@ export default function Quiz() {
 
   function handleSubmit() {
     const nextQuestion = questionIndex + 1;
-    if (nextQuestion < totalQuestions) {
-      setQuestionIndex(nextQuestion);
-    } else {
+    if (nextQuestion === totalQuestions || endgame) {
       setScreenState(screenStates.RESULT);
+    } else {
+      setQuestionIndex(nextQuestion);
     }
   }
 
@@ -50,6 +53,7 @@ export default function Quiz() {
             questionIndex={questionIndex}
             onSubmit={handleSubmit}
             addResult={addResult}
+            setEndGame={setEndgame}
           />
         )}
         {screenState === screenStates.LOADING && (
@@ -58,6 +62,12 @@ export default function Quiz() {
         {screenState === screenStates.RESULT && (
           <ResultWidget results={results} />
         )}
+
+        <Silvio
+          alt="Silvão"
+          src="/silvao.png"
+        />
+
       </QuizContainer>
     </QuizBackground>
   );
