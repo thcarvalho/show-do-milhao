@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import AlternativesForm from '../AlternativesForm';
 import Button from '../Button';
 import { Widget } from '../Widget';
 
 function QuestionWidget({
-  totalQuestions, question, questionIndex, onSubmit, addResult,
+  totalQuestions, question, questionIndex, onSubmit, addResult, setEndGame,
 }) {
   const [selectedValue, setSelectedValue] = useState(undefined);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const questionId = `question__${questionIndex}`;
   const hasAlternativeSelected = selectedValue !== undefined;
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start('show');
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +25,7 @@ function QuestionWidget({
       setIsCorrect(true);
     } else {
       setIsCorrect(false);
+      setEndGame(true);
     }
   }
 
@@ -29,6 +36,7 @@ function QuestionWidget({
     setIsCorrect(null);
     setIsFormSubmitted(false);
     onSubmit();
+    controls.start('hidden').then(() => controls.start('show'));
   }
 
   return (
@@ -39,7 +47,15 @@ function QuestionWidget({
         </h3>
       </Widget.Header>
       <img alt="Descrição" style={{ width: '100%', height: '150px', objectFit: 'cover' }} src={question.image} />
-      <Widget.Content>
+      <Widget.Content
+        as={motion.div}
+        transition={{ duration: 0.4, type: 'spring' }}
+        variants={{
+          show: { x: 0, opacity: 1 },
+          hidden: { x: -500, opacity: 0 },
+        }}
+        animate={controls}
+      >
         <h2>{question.title}</h2>
         <p>{question.description}</p>
         <AlternativesForm onSubmit={isFormSubmitted ? handleNextQuestion : handleSubmit}>
@@ -50,7 +66,14 @@ function QuestionWidget({
             return (
               <Widget.Topic
                 key={alternativeId}
-                as="label"
+                as={motion.label}
+                transition={{ duration: 0.3, type: 'spring', delay: (index / 10) }}
+                variants={{
+                  show: { y: 0, opacity: 1 },
+                  hidden: { y: 10, opacity: 0 },
+                }}
+                initial="hidden"
+                animate={controls}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
                 data-status={isFormSubmitted && alternativeStatus}

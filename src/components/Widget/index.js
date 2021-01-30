@@ -1,29 +1,32 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Widget = styled.div`
-margin-top: 24px;
-margin-bottom: 24px;
-border: 1px solid ${({ theme }) => theme.colors.primary};
-background-color: ${({ theme }) => theme.colors.mainBg};
-border-radius: 4px;
-overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.mainBg};
+  border-radius: 4px;
+  overflow: hidden;
 
-h1, h2, h3 {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 0;
-}
-p {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-}
+  h1, h2, h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0;
+  }
 
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+  }
 `;
 
 Widget.Content = styled.div`
 padding: 24px 32px 32px 32px;
+display: flex;
+flex-direction: column;
 & > *:first-child {
   margin-top: 0;
 }
@@ -63,5 +66,19 @@ Widget.Topic = styled.a`
   &:hover,
   &:focus {
     opacity: .5;
+  }
+`;
+
+Widget.Link = styled.a`
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  transition: opacity 0.1s;
+
+  span {
+    font-weight: bolder;
+  }
+
+  &:hover {
+    opacity: 80%;
   }
 `;

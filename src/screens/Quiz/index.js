@@ -9,6 +9,7 @@ import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import QuizLogo from '../../components/QuizLogo';
 import { Widget } from '../../components/Widget';
+import Silvio from '../../components/Silvio';
 
 function Quiz({ db }) {
   const [name, setName] = useState('');
@@ -16,7 +17,7 @@ function Quiz({ db }) {
 
   function navigateToQuiz(e) {
     e.preventDefault();
-    router.push(`/quiz?name=${name}`);
+    router.push({ pathname: '/quiz', query: { name } });
   }
 
   return (
@@ -25,10 +26,10 @@ function Quiz({ db }) {
         <QuizLogo />
         <Widget
           as={motion.section}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, type: 'spring' }}
           variants={{
-            show: { opacity: 1 },
-            hidden: { opacity: 0 },
+            show: { x: 0, opacity: 1 },
+            hidden: { x: -500, opacity: 0 },
           }}
           initial="hidden"
           animate="show"
@@ -44,8 +45,6 @@ function Quiz({ db }) {
                 name && (
                   <Button type="submit" disabled={!name}>
                     Jogar
-                    {' '}
-                    {name}
                   </Button>
                 )
               }
@@ -55,10 +54,10 @@ function Quiz({ db }) {
 
         <Widget
           as={motion.section}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, type: 'spring', delay: 0.1 }}
           variants={{
-            show: { opacity: 1 },
-            hidden: { opacity: 0 },
+            show: { x: 0, opacity: 1 },
+            hidden: { x: -500, opacity: 0 },
           }}
           initial="hidden"
           animate="show"
@@ -82,15 +81,29 @@ function Quiz({ db }) {
         </Widget>
         <Footer
           as={motion.section}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.5, type: 'spring', delay: 0.2 }}
           variants={{
-            show: { opacity: 1 },
-            hidden: { opacity: 0 },
+            show: { x: 0, opacity: 1 },
+            hidden: { x: -500, opacity: 0 },
           }}
           initial="hidden"
           animate="show"
         />
       </QuizContainer>
+
+      <Silvio
+        as={motion.img}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        variants={{
+          show: { opacity: 1 },
+          hidden: { opacity: 0 },
+        }}
+        initial="hidden"
+        animate="show"
+        alt="Silvão"
+        src="/silvao.png"
+      />
+
       <GitHubCorner projectUrl="https://github.com/thcarvalho/show-do-milhao" />
     </QuizBackground>
   );
