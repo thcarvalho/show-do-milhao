@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import db from '../../db.json';
-import QuizBackground from '../components/QuizBackground';
-import QuizContainer from '../components/QuizContainer';
-import QuizLogo from '../components/QuizLogo';
-import QuestionWidget from '../components/QuestionWidget';
-import LoadingWidget from '../components/LoadingWidget';
-import ResultWidget from '../components/ResultWidget';
+import db from '../../../db.json';
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import QuizLogo from '../../components/QuizLogo';
+import QuestionWidget from '../../components/QuestionWidget';
+import LoadingWidget from '../../components/LoadingWidget';
+import ResultWidget from '../../components/ResultWidget';
 
 const screenStates = {
   QUIZ: 'QUIZ',
