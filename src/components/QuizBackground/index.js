@@ -6,7 +6,9 @@ const QuizBackground = styled.div`
   background-position: center;
   background-image: url(${({ backgroundImage }) => backgroundImage});
   background-color: ${({ theme }) => theme.colors.mainBg};
+  display: flex;
   flex: 1;
+  flex-direction: row;
   @media screen and (max-width: 500px) {
     background-image: none;
     &:after {
